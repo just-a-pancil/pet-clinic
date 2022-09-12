@@ -1,0 +1,1 @@
+CREATE SCHEMA `pet-clinic` DEFAULT CHARACTER SET utf8 ;
