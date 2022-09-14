@@ -1,0 +1,12 @@
+server:
+    port:3306
+
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/pet-clinic
+        username: root
+        password: fuckY0u!
+        # driverClassName: com.mysql.jdbc.Driver
+    jpa:
+        show-sql: true 
+        
