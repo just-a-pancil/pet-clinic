@@ -12,13 +12,13 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
-public class someController {
+public class UserController {
 
     private final UserService userService;
 
     @GetMapping("/users/{id}")
     public User sayHello(@PathVariable Long id){
-        return userService.getUser(id);
+        return userService.getById(id);
     }
     
 }

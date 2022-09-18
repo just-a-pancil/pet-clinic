@@ -1,5 +1,6 @@
 package com.petClinic.Pet.clinic.model;
 
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,10 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Table;
-import javax.servlet.annotation.ServletSecurity;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.servlet.annotation.ServletSecurity;
@@ -28,37 +25,20 @@ import lombok.Setter;
 
 
 
+
 @Getter
 @Setter
 @Entity
-@Table(name = "users")
+@Table(name = "roles")
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"email"})
-public class User { 
+public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
-    private String email;
-    private String password;
-
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-      name = "users_roles",
-      joinColumns = @JoinColumn(name = "user_id"),
-      inverseJoinColumns = @JoinColumn(name = "role_id")
-    )
-    private Set<Role> roles = new HashSet<>();
- 
-    public void addRole(Role role) {
-		roles.add(role);
-		roles.getUser().add(this);
-	}
-
-	public void removeRole(Role role) {
-		roles.remove(role);
-		roles.getUser().remove(this);
-	}
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;   
 
 }
