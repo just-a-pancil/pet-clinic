@@ -1,8 +1,11 @@
 package com.petClinic.Pet.clinic;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.List;
 
 import javax.annotation.security.RunAs;
 
@@ -78,11 +81,14 @@ public class PetClinicApplicationTests {
 		assertNotNull(responseEntity.getBody());
 	}
 
-	
-
-	// @Test
-	// public void postUser_whenUserIsValid_passwordIsHasheedInDatabase(){
-		// User user = 	
-	// }
+	@Test
+	public void postUser_whenUserIsValid_passwordIsHasheedInDatabase(){
+		User user = createUser();
+		ResponseEntity<GenericResponse> responseEntity = testRestTemplate
+		.postForEntity("/api/1.0/users", user, GenericResponse.class);
+		List<User> users = (List<User>) userRepository.findAll();
+		User inDB = users.get(0);
+		assertNotEquals(inDB.getPassword(), user.getPassword());
+	}
 
 }

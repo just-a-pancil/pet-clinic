@@ -13,7 +13,7 @@ import org.hibernate.annotations.ManyToAny;
 import lombok.*;
 
 
-
+@Data
 @Getter
 @Setter
 @Entity

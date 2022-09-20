@@ -8,4 +8,5 @@ import com.petClinic.Pet.clinic.model.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long>{
     User getById(Long id);
+    User getByEmail(String email);
 }
