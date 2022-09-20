@@ -11,6 +11,8 @@ public class mainController {
 	public String greeting( Model model) {
 		model.addAttribute("title", "Main Page");
 		return "home";
-	}
+	}	
+
+		
 
 }
